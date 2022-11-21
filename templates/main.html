@@ -1,0 +1,63 @@
+<!doctype html>
+<style>
+form{
+    margin: auto;
+    width: 70%;
+}  
+
+.result{
+    margin: auto;
+    width: 35%;
+    border: 1px solid #ccc;
+}
+</style>
+
+<head>
+    <title>Прогнозирование толщины и глубины сварного шва</title>
+</head>
+
+<form action="{{url_for('main')}}" method="POST">
+    <fieldset>
+        <legend>Введите значение</legend>
+        Величина сварочного тока (IW)
+        <input name = "_IW" type="number" step="any"
+        required>
+        <br>
+        <br>
+        <legend>Введите значение</legend>
+        Ток фокусировки электронного пучка (IF)
+        <input name = "_IF" type="number" step="any"
+        required>
+        <br>
+        <br>
+        <legend>Введите значение</legend>
+        Скорость сварки (VW)
+        <input name = "_VW" type="number" step="any"
+        required>
+        <br>
+        <br>
+        <legend>Введите значение</legend>
+        Расстояние от поверхности образцов до электронно-оптической системы (FP)
+        <input name = "_FP" type="number" step="any"
+        required>
+        <br>
+        <br>
+        <legend>Введите значение</legend>
+        Ускоряющее напряжение (U)
+        <input name = "_U" type="number" step="any"
+        required>
+        <br>
+        <br>
+        <input type="submit">
+    </fieldset>
+</form>
+
+<div class="result" align="center">
+    {% if result %}
+        <br>
+        <p style="font-size:50px">
+        Предсказанные значения
+        </p>
+        <p style="font-size:50px"> {{result}}</p>
+    {% endif %}
+</div>
